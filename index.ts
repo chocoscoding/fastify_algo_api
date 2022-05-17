@@ -1,5 +1,5 @@
 import fastify from "fastify";
-import data from 'data.json'
+const data = require("data.json")
 
 const server = fastify();
 
