@@ -4,6 +4,10 @@ import * as data from "./data.json"
 
 const server = fastify();
 
+server.register(require('@fastify/cors'), { 
+  origin: "*"
+})
+
 server.get("/", async (request, reply) => {
   reply.code(200).send({ data});
 });
