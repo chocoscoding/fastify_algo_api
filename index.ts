@@ -5,7 +5,7 @@ import * as data from "./data.json"
 const server = fastify();
 
 server.register(require('@fastify/cors'), { 
-  origin: "*"
+  origin: "true"
 })
 
 server.get("/", async (request, reply) => {
