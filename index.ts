@@ -8,10 +8,12 @@ server.get("/", async (request, reply) => {
   reply.code(200).send({ data});
 });
 
-server.listen(process.env.PORT || 8080, "127.0.0.1", (err, address) => {
+server.listen(process.env.PORT || 8080, "0.0.0.0", (err, address) => {
   if (err) {
     console.error(err);
     process.exit(1);
   }
   console.log(`Server listening at ${address}`);
 });
+
+
