@@ -9,7 +9,7 @@ server.register(require('@fastify/cors'), {
 });
 
 server.get("/", async (request, reply) => {
-  reply.code(200).send({ data});
+  reply.code(200).send({ "data": data});
 });
 
 server.listen(process.env.PORT || 8080, "0.0.0.0", (err, address) => {
