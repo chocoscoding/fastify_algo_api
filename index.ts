@@ -1,7 +1,7 @@
 import fastify from "fastify";
 import { type } from "os";
 // const data = require("./data.json")
-import * as data from "./data.json"
+import data from "./data.json"
 // import * as data from "./data.json"
 
 const server = fastify();
