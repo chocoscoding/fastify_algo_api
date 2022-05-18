@@ -1,12 +1,12 @@
 import fastify from "fastify";
+const cors = require('fastify-cors');
 // const data = require("./data.json")
 import * as data from "./data.json"
 
 const server = fastify();
 
-server.register(require('@fastify/cors'), { 
-  origin: "true"
-})
+server.register(cors, { origin: ['http://localhost:3000','https://algo4all.vercel.app/'] });
+
 
 server.get("/", async (request, reply) => {
   reply.code(200).send({ data});
