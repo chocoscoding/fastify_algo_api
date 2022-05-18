@@ -12,19 +12,18 @@ server.register(require('@fastify/cors'), {
 
 server.get("/names", async (request, reply) => {
   let x: { name: string; }[] = []
-  // data.map(ele=>{
-  //   const d = {name: ele.name}
-  //   x.push(d)
-  // })
-  // console.log(x);
+
+  for (let index = 0; index < data.length; index++) {
+    const c = data[index].name.split('-').splice(1).join('-')
+    const d = {name: c.charAt(0).toUpperCase() + c.slice(1)}
+    x.push(d)
+  }
   
-  // console.log(x);
-  console.log(Array.isArray(data));
-  
-  reply.code(200).send(data);
+  reply.code(200).send(x);
 });
 server.get("/data", async (request, reply) => {
-  reply.code(200).send({ "data": data});
+  const { name } = request.query as { name: string};
+  reply.code(200).send({ "data": getone(name)});
 });
 
 server.listen(process.env.PORT || 8080, "0.0.0.0", (err, address) => {
@@ -34,5 +33,19 @@ server.listen(process.env.PORT || 8080, "0.0.0.0", (err, address) => {
   }
   console.log(`Server listening at ${address}`);
 });
+
+const getone = (name: string)=>{
+  let xmain: any = []
+  for(let i: number = 0; i < data.length; i++){
+    const a1: string = data[i].name.split('-').splice(1).join('-');
+    const a2: string = a1.charAt(0).toUpperCase() + a1.slice(1);
+    if(a2 === name){
+     const x = data[i]
+       xmain = x
+    } 
+  }
+  return xmain
+
+}
 
 
