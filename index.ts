@@ -1,12 +1,12 @@
 import fastify from "fastify";
-const cors = require('fastify-cors');
 // const data = require("./data.json")
 import * as data from "./data.json"
 
 const server = fastify();
 
-// server.register(cors, { origin: '*' });
-
+server.register(require('@fastify/cors'), { 
+  origin: '*' 
+})
 
 server.get("/", async (request, reply) => {
   reply.code(200).send({ data});
